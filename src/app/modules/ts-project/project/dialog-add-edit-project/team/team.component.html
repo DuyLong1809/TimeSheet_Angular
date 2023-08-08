@@ -1,0 +1,146 @@
+<div class="flex h-[60vh]">
+    <mat-accordion class="w-[60%]">
+        <mat-expansion-panel expanded="true" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="font-bold"> Team </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="flex flex-row justify-between items-center">
+                <mat-checkbox class="font-bold" [checked]="showDeactive" (change)="toggleShowDeactive()">Show deactive
+                    member</mat-checkbox>
+                <mat-form-field class="w-[70%]">
+                    <mat-label> Search by name, email</mat-label>
+                    <mat-icon class="" matPrefix> search </mat-icon>
+                    <input matInput [(ngModel)]="searchInputTeam" />
+                </mat-form-field>
+            </div>
+            <div>
+                <table class="w-full">
+                    <tbody class="w-full">
+                        <tr class=" w-full " *ngFor="let getTeam of getTeams | searchTeam:searchInputTeam">
+                            <td *ngIf="showDeactive || getTeam.role !== 3"
+                                class=" w-full justify-between flex items-center hover:bg-slate-200 py-4 border-b-[1px] border-t-[1px]">
+                                <div class="flex items-center">
+                                    <button (click)="move(getTeam, 'remove')" class="w-10 h-10">
+                                        <mat-icon class="text-[30px]">clear</mat-icon>
+                                    </button>
+                                    <div>
+                                        <div class="flex items-center">
+                                            <img class="rounded-[50%] w-[60px] h-[60px]"
+                                                src="../../../../../../assets/img/1685940394016_admin_image.jpg" alt="">
+                                            <div class="ml-3">
+                                                <div class="gap-2 items-center">
+                                                    <span class="mr-2">{{ getTeam.name }}</span>
+                                                    <ng-container *ngIf="getTeam.branchId !== null">
+                                                        <span
+                                                            class="text-white bg-slate-400 rounded-[8px] pr-[7px] pl-[7px] text-[12px]">{{
+                                                            getTeam.branchId | branch }}</span>
+                                                    </ng-container>
+                                                    <span class="text-white rounded-[8px] pr-[7px] pl-[7px] text-[12px]"
+                                                        [ngClass]=" bgtype[getTeam.type]">{{ getTeam.type |
+                                                        listType}}</span>
+                                                    <ng-container
+                                                        *ngIf="getTeam.level !== 0 && getTeam.level !== null ">
+                                                        <span
+                                                            class="text-white rounded-[8px] pr-[7px] pl-[7px] text-[12px]"
+                                                            [ngClass]=" bglevel[getTeam.level] ">{{ getTeam.level |
+                                                            levelType}}</span>
+                                                    </ng-container>
+                                                </div>
+                                                <div>
+                                                    <span>{{ getTeam.emailAddress }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <mat-form-field class="mr-4">
+                                        <mat-select [(ngModel)]="getTeam.role"
+                                            (valueChange)="onRoleSelectionChange(getTeam, $event)">
+                                            <mat-option [value]="0">Member</mat-option>
+                                            <mat-option [value]="1">Project Manager</mat-option>
+                                            <mat-option [value]="2">Shadow</mat-option>
+                                            <mat-option [value]="3">Deactive</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                    <button (click)="move(getTeam, 'remove')" class="w-10 h-10">
+                                        <mat-icon class="text-[30px]">keyboard_arrow_right</mat-icon>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion class="w-[40%] ">
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="font-bold"> Select team member </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="flex flex-row justify-between items-center">
+                <mat-form-field class="w-[20%]">
+                    <mat-label>Branch</mat-label>
+                    <mat-select [(ngModel)]="allBranch">
+                        <mat-option *ngFor="let lb of listBranchs" [value]="lb.id">{{ lb.displayName }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="w-[20%]">
+                    <mat-label>Type</mat-label>
+                    <mat-select [(value)]="selectedType">
+                        <mat-option *ngFor="let lt of listTypes" [value]="lt.key">{{ lt.label }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="w-[45%]">
+                    <mat-label> Search by name, email</mat-label>
+                    <mat-icon matPrefix> search </mat-icon>
+                    <input matInput [(ngModel)]="searchInput" />
+                </mat-form-field>
+            </div>
+            <div class="table-team">
+                <table>
+                    <tbody>
+                        <tr
+                            *ngFor="let LuTeam of listUserTeam | combinedTypeAndBranch:searchInput:allBranch:selectedType">
+                            <td (click)="move(LuTeam, 'add')"
+                                class="flex items-center hover:bg-slate-200 py-4 border-b-[1px] border-t-[1px]">
+                                <button class="w-10 h-10">
+                                    <mat-icon class="text-[30px]">keyboard_arrow_left</mat-icon>
+                                </button>
+                                <div>
+                                    <div class="flex items-center">
+                                        <img class="rounded-[50%] w-[60px] h-[60px]"
+                                            src="../../../../../../assets/img/1685940394016_admin_image.jpg" alt="">
+                                        <div class="ml-3">
+                                            <div class="gap-2 items-center">
+                                                <span class="mr-2">{{ LuTeam.name }}</span>
+                                                <ng-container *ngIf="LuTeam.branchId !== null">
+                                                    <span
+                                                        class="text-white bg-slate-400 rounded-[8px] pr-[7px] pl-[7px] text-[12px]">{{
+                                                        LuTeam.branchId | branch }}</span>
+                                                </ng-container>
+                                                <span class="text-white rounded-[8px] pr-[7px] pl-[7px] text-[12px]"
+                                                    [ngClass]=" bgtype[LuTeam.type] ">{{ LuTeam.type | listType}}</span>
+                                                <ng-container *ngIf="LuTeam.level !== 0 && LuTeam.level !== null ">
+                                                    <span class="text-white rounded-[8px] pr-[7px] pl-[7px] text-[12px]"
+                                                        [ngClass]=" bglevel[LuTeam.level] ">{{ LuTeam.level |
+                                                        levelType}}</span>
+                                                </ng-container>
+                                            </div>
+                                            <div>
+                                                <span>{{ LuTeam.emailAddress }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

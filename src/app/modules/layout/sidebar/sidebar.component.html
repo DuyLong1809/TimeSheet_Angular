@@ -1,0 +1,174 @@
+<section>
+    <div class="sidebar">
+        <div class="user-info">
+            <div class="user-info_1">
+                <div class="image_user">
+                    <img src="../../../../../assets/img/1685940394016_admin_image.jpg" height="60" width="60"
+                        alt="User">
+                </div>
+                <div>
+                    <div>admin admin</div>
+                    <div>admin@aspnetboilerplate.com</div>
+                </div>
+            </div>
+            <!-- <div class="btn_arrow_down" (click)="showPopupLogout()">
+                <mat-icon>keyboard_arrow_down</mat-icon>
+            </div>
+            <div class="btn_icon_logout btn_logout" [style.display]="popup ? 'block' : 'none'">
+                <div class="icon_logout" (click)="logOut()" >
+                    <mat-icon>input</mat-icon>
+                    Logout
+                </div>
+            </div> -->
+            <button class="btn_arrow_down" mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>keyboard_arrow_down</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="logOut()">
+                    <mat-icon>input</mat-icon>
+                    <span>Logout</span>
+                </button>
+            </mat-menu>
+        </div>
+        <div class="menu">
+            <div>
+                <ul class="list_menu">
+                    <li class="list_menu_item">
+                        <div class="list_menu_item_1">
+                            <mat-icon>home</mat-icon>
+                            <a>Home page</a>
+                        </div>
+                    </li>
+                    <li class="list_menu_item" (click)="onClickMenuAdmin()">
+                        <div class="list_menu_item_1">
+                            <mat-icon>group_work</mat-icon>
+                            <a>Admin</a>
+                            <div [hidden]="popupMenuAdmin" class="icon_plus">+</div>
+                            <div [hidden]="!popupMenuAdmin" class="icon_minus">_</div>
+                        </div>
+                    </li>
+                    <ul class="list_menu_item_admin" [style.display]="popupMenuAdmin ? 'block' : 'none'">
+                        <li class="list_menu_item_admin_1">
+                            <mat-icon>people</mat-icon>
+                            <a>Users</a>
+                        </li>
+                        <li class="list_menu_item_admin_1">
+                            <mat-icon>local_offer</mat-icon>
+                            <a>Roles</a>
+                        </li>
+                        <li class="list_menu_item_admin_1">
+                            <mat-icon>settings_applications</mat-icon>
+                            <a>Configuration</a>
+                        </li>
+                        <li class="list_menu_item_admin_1">
+                            <mat-icon>people_outline</mat-icon>
+                            <a>Clients</a>
+                        </li>
+                        <li class="list_menu_item_admin_1">
+                            <mat-icon>import_contacts</mat-icon>
+                            <a routerLink="admin/task">Tasks</a>
+                        </li>
+                        <li class="list_menu_item_admin_1">
+                            <mat-icon>date_range</mat-icon>
+                            <a>Leave types</a>
+                        </li>
+                        <li class="list_menu_item_admin_1">
+                            <mat-icon>apartment</mat-icon>
+                            <a>Branches</a>
+                        </li>
+                    </ul>
+                    <li class="list_menu_item">
+                        <div class="list_menu_item_1">
+                            <mat-icon>assessment</mat-icon>
+                            <a routerLink="project">Projects</a>
+                        </div>
+                    </li>
+                    <li class="list_menu_item">
+                        <div class="list_menu_item_1">
+                            <mat-icon>alarm</mat-icon>
+                            <a>My timesheets</a>
+                        </div>
+                    </li>
+                    <li class="list_menu_item">
+                        <div class="list_menu_item_1">
+                            <mat-icon>date_range</mat-icon>
+                            <a>Timesheets</a>
+                        </div>
+                    </li>
+                    <li class="list_menu_item">
+                        <div class="list_menu_item_1">
+                            <mat-icon>supervised_user_circle</mat-icon>
+                            <a>Timesheets monitoring</a>
+                        </div>
+                    </li>
+                    <li class="list_menu_item">
+                        <div class="list_menu_item_1">
+                            <mat-icon>event_busy</mat-icon>
+                            <a>My leave days / onsite</a>
+                        </div>
+                    </li>
+                    <li class="list_menu_item">
+                        <div class="list_menu_item_1">
+                            <mat-icon>rule</mat-icon>
+                            <a>Manage team working calendar</a>
+                        </div>
+                    </li>
+                    <li class="list_menu_item">
+                        <div class="list_menu_item_1">
+                            <mat-icon>groups</mat-icon>
+                            <a>Team working calendar</a>
+                        </div>
+                    </li>
+                    <li class="list_menu_item">
+                        <div class="list_menu_item_1">
+                            <mat-icon>date_range</mat-icon>
+                            <a>Setting off days</a>
+                        </div>
+                    </li>
+                    <li class="list_menu_item">
+                        <div class="list_menu_item_1">
+                            <mat-icon>date_range</mat-icon>
+                            <a>Overtime settings</a>
+                        </div>
+                    </li>
+                    <li class="list_menu_item">
+                        <div class="list_menu_item_1">
+                            <mat-icon>date_range</mat-icon>
+                            <a>My working time</a>
+                        </div>
+                    </li>
+                    <li class="list_menu_item">
+                        <div class="list_menu_item_1">
+                            <mat-icon>access_time</mat-icon>
+                            <a>Manage working times</a>
+                        </div>
+                    </li>
+                    <li class="list_menu_item">
+                        <div class="list_menu_item_1">
+                            <mat-icon>description</mat-icon>
+                            <a>Report</a>
+                        </div>
+                    </li>
+                    <li class="list_menu_item">
+                        <div class="list_menu_item_1">
+                            <mat-icon>rate_review</mat-icon>
+                            <a>Review Interns</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <footer>
+            <div class="menu_footer">
+                <div class="menu_footer_copyright">
+                    <div>© 2023 </div>
+                    <p>Timesheet</p>
+                </div>
+                <div class="menu_footer_version">
+                    <b>Version</b>
+                    4.3.0.0 [20221606]
+                </div>
+            </div>
+        </footer>
+    </div>
+</section>

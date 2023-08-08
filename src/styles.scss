@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    transition: all .5s;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', 'Arial', 'Tahoma', 'sans-serif';
+}
+
+.success_snackbar {
+    @apply bg-green-500 text-white;
+}
+
+.fail_snackbar {
+    @apply bg-red-500 text-white;
+}
+
+
+.over {
+    position: absolute;
+    background: rgba(0, 0, 0, .32);
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+}

@@ -1,0 +1,57 @@
+<div *ngFor="let customerProject  of customerProjects" class="project_content_table">
+    <table class="project_content_table_1">
+        <thead class="table_thead">
+            <th class="table_thead_th">
+                <h4>{{ customerProject.customerName }}</h4>
+            </th>
+        </thead>
+        <tbody class="table_tbody">
+            <tr>
+                <td *ngFor="let project of customerProject.projects">
+                    <div>
+                        <span class="table_tbody_txt">{{ project.name }}</span>
+                        <span class="table_tbody_pm">{{ project.pms }}</span>
+                        <span class="table_tbody_member">{{ project.activeMember }} members</span>
+                        <span class="table_tbody_pType">{{ project.projectType | proTypeView }}</span>
+                        <span class="table_tbody_pTime">
+                            <span class="start">{{ project.timeStart | date : "dd/MM/yyyy"}}</span>
+                            <span class="end"> - {{ project.timeEnd | date : "dd/MM/yyyy"}}</span>
+                        </span>
+                    </div>
+                    <div class="table_tbody_action">
+                        <button class="btn_action" mat-button [matMenuTriggerFor]="menu">Actions
+                            <mat-icon>arrow_drop_down</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item (click)="openEditProject(project.id)">
+                                <mat-icon>edit</mat-icon>
+                                Edit
+                            </button>
+                            <button mat-menu-item (click)="openViewProject(project.timeStart, project.timeEnd, project.id)" >
+                                <mat-icon>remove_red_eye</mat-icon>
+                                View
+                            </button>
+                            <button  *ngIf="project.status === 0; else deactive"
+                             mat-menu-item (click)="openDialogConfirm(project.id, deActive, project.name)">
+                                <mat-icon>clear</mat-icon>
+                                Deactive
+                            </button>
+                            <ng-template #deactive>
+                                <button mat-menu-item (click)="openDialogConfirm(project.id, active, project.name)">
+                                  <span>
+                                    <mat-icon>done</mat-icon>
+                                    Active
+                                  </span>
+                                </button>
+                              </ng-template>
+                            <button style="color: crimson;" mat-menu-item (click)="openDialogConfirm(project.id, delete, project.name)">
+                                <mat-icon>delete</mat-icon>
+                                Delete
+                            </button>
+                        </mat-menu>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

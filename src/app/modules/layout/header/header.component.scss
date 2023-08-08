@@ -1,0 +1,38 @@
+.header{
+    background-color: #f44336;
+    width: 100%;
+    min-height: 71px;
+    padding: 0 15px;
+    position: fixed;
+    z-index: 10;
+    box-shadow: 0 1px 5px rgba(0,0,0,.3);
+    top: 0;
+}
+
+.header_img_text{
+    width: 100%;
+    min-height: 71px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header_img{
+    width: 20px;
+    height: 20px;
+}
+
+.header_img_text_1{
+    display: flex;
+}
+
+.header_title{
+    font-size: 18px;
+    line-height: 20px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.header_icon_more_vert mat-icon{
+    color: #fff;
+}

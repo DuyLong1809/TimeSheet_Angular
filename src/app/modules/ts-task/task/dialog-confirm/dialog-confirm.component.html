@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="dialog_failed_icon">
+        <div class="dialog_warning">
+            <span>!</span>
+        </div>
+    </div>
+    <div class="dialog_failed_title">Are you sure?</div>
+    <h3>{{ data.title }}</h3>
+    <div class="btn_dialog_failed">
+        <button mat-button mat-dialog-close class="btn_cancel"
+            style="margin-right: 15px; color:#555; background-color: #efefef;">Cancel</button>
+        <button (click)="toggleArchiveAndDel()" mat-button class="btn_cancel">Yes</button>
+    </div>
+</div>

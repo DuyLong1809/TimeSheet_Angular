@@ -1,0 +1,134 @@
+.admin_task{
+    background: #fff;
+    min-height: 50px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.2);
+    position: relative;
+    height: auto;
+    width: 1159px;
+    margin: 110px 30px 30px 0;
+}
+
+.admin_task_header{
+    color: #555;
+    padding: 10px;
+    position: relative;
+    border-bottom: 1px solid rgba(204,204,204,.35);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin_task_header h2{
+    margin: 0;
+    font-size: 18px;
+    font-weight: 400;
+    color: #111;
+    margin-left: 10px;  
+}
+
+.admin_task_refresh{
+    position: absolute;
+    right: 10px;
+    bottom: -50px;
+    border-radius: 4px;
+    background-color: #fff;
+    min-width: 112px;
+    max-width: 280px;
+    height: 49px;
+    box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+    cursor: pointer;    
+}
+
+.admin_task_refresh_1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.material_icon_refesh{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.material_icon_task{
+    cursor: pointer;
+}
+
+.admin_task_title h5{
+    font-weight: 700;
+    font-size: 15px;
+    color: #555;
+}
+
+.admin_task_title {
+    margin-top: 15px;
+}
+
+.admin_task_title p {
+    font-weight: normal;
+    color: #555;
+}
+
+.table_common_task{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.table_common_task>thead>tr>th {
+    border-top: 1px solid #ddd;
+    padding: 10px;
+}
+
+// .table_common_task tbody tr td {
+//     border-top: 1px solid #eee;
+//     border-bottom: 1px solid #eee;
+// }
+
+.table_common_task tbody:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+
+.table_common_task tbody tr:hover{
+    background-color: #f5f5f5;;
+}
+
+.table_common_task tbody td {
+    padding: 10px 5px;
+}
+
+.table_left button{
+    margin: 0 5px;
+    color: #555;
+}
+
+.table_left, .table_right{
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
+
+tbody tr{
+    display: flex;
+    justify-content: space-between;
+}
+
+.table_right_btn{
+    display: flex;
+    gap: 10px;
+}
+
+.table_right_btn button{
+    color: #555;
+}
+
+.title_table{
+    color: #555;
+}
+
+.table_text{
+    color: #555;
+}

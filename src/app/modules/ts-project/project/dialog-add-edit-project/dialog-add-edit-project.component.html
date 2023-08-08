@@ -1,0 +1,32 @@
+<div class="dialog_container">
+    <header class="dialog_container_header">
+        <div class="dialog_header">
+            <h2>{{ title }}</h2>
+        </div>
+    </header>
+    <div class="dialog_content">
+        <form [formGroup]="createForm">
+            <div>
+                <div class="w-[100%] h-auto">
+                    <mat-tab-group>
+                        <mat-tab label="General">
+                            <app-general [listClients]="listClients"></app-general>
+                        </mat-tab>
+
+                        <mat-tab label="Team">
+                            <app-team [listUserTeam]="listUserTeam" [listBranchs]="listBranchs"></app-team>
+                        </mat-tab>
+
+                        <mat-tab label="Tasks">
+                            <app-task-project></app-task-project>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+                <div class="dialog_btn">
+                    <button class="btn_cancel" mat-raised-button (click)="cancelProject()">Cancel</button>
+                    <button [disabled]="createForm.invalid" (click)="onSubmit()" class="btn_save" mat-raised-button color="warn">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

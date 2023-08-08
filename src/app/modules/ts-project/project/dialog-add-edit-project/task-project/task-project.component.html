@@ -1,0 +1,56 @@
+<div class="task_project_container">
+    <table class="table_task_project">
+        <tbody>
+            <tr class="table_task_project_tr flex">
+                <th class=" title_table pl-5 flex">Tasks</th>
+                <th class=" title_table pl-5 flex flex-col items-start">
+                    Billable
+                    <mat-checkbox class="example-margin" [checked]="allComplete" [indeterminate]="someComplete()"
+                        (change)="setAll($event.checked)">
+                    </mat-checkbox>
+                </th>
+            </tr>
+            <tr *ngFor="let subtask of subtasks">
+                <td class="flex">
+                    <button (click)="move(subtask, remove)" type="button" class="mat-icon-btn">
+                        <span class="mr-4">
+                            <mat-icon>clear</mat-icon>
+                        </span>
+                    </button>
+                    <div class="flex w-[498px] justify-between">
+                        <p>{{subtask.name}}</p>
+                        <mat-checkbox [(ngModel)]="subtask.completed" (change)="updateAllComplete(subtask.id, $event.checked)">
+                        </mat-checkbox>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <mat-accordion class="w-[60%]">
+        <mat-expansion-panel expanded="true" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title> Select Task </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="flex flex-row justify-between items-center">
+                <table class="table_task_project">
+                    <tbody>
+                        <tr *ngFor="let otherts of otherTask">
+                            <td class="flex">
+                                <button (click)="move(otherts, add)" type="button" class="mat-icon-btn">
+                                    <span class="mr-4">
+                                        <mat-icon> add_circle_outline </mat-icon>
+                                    </span>
+                                </button>
+                                <div class="flex w-[498px] justify-between">
+                                    <p>{{ otherts.name }}</p>
+                                    <p>Other Task</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

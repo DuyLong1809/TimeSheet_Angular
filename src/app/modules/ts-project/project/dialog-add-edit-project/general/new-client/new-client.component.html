@@ -1,0 +1,26 @@
+<div class="container">
+    <form action="" [formGroup]="newClientForm">
+        <div class="dialog_add_edit">
+            <h1>New Client</h1>
+            <div class="dialog_input_select">
+                <mat-form-field>
+                    <mat-label>Name</mat-label>
+                    <input formControlName="nameClient" matInput>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Code</mat-label>
+                    <input formControlName="codeClient" matInput>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Address</mat-label>
+                    <textarea formControlName="addressClient" matInput></textarea>
+                </mat-form-field>
+            </div>
+            <div class="dialog_btn">
+                <button class="btn_cancel" mat-dialog-close mat-raised-button>Cancel</button>
+                <button class="btn_save" (click)="createClient()" [disabled]="newClientForm.invalid" mat-raised-button
+                    color="warn">Save</button>
+            </div>
+        </div>
+    </form>
+</div>

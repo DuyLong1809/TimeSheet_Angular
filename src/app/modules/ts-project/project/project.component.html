@@ -1,0 +1,52 @@
+<div class="project">
+    <ng-container *ngIf="isLoading">
+        <div class="over"></div>
+    </ng-container>
+    <header class="project_header">
+        <h2>
+            Manage Projects
+        </h2>
+        <button mat-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+                <div class="material_icon_refesh">
+                    <mat-icon>refresh</mat-icon>
+                    Refresh
+                </div>
+            </button>
+        </mat-menu>
+    </header>
+    <div class="project_content">
+        <div class="project_content_1">
+            <div class="project_content_1_header">
+                <button (click)="openDialogProject()" class="project_content_btn" mat-raised-button color="warn">
+                    <span class="flex items-center justify-center">
+                        <mat-icon>add</mat-icon>
+                        New Project
+                    </span>
+                </button>
+                <mat-form-field appearance="outline" class="project_content_select">
+                    <mat-select [value]="status" (selectionChange)="onStatusSelectionChange($event.value)">
+                        <mat-option *ngFor="let option of options" [value]="option.value">{{ option.label }}({{
+                            option.count }})</mat-option>
+
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="project_content_search w-2/4" appearance="outline">
+                    <mat-icon matPrefix>search</mat-icon>
+                    <mat-label>Search by client or project name</mat-label>
+                    <input [(ngModel)]="searchInput" (keyup.enter)="getAllstatus()" matInput>
+                </mat-form-field>
+            </div>
+            <ng-container *ngIf="isLoading">
+                <div class="loading">
+                    <mat-spinner color="warn"></mat-spinner>
+                </div>
+            </ng-container>
+            <div>
+                <app-list-project [customerProjects]="customerProjects" [listProject]="listProject"></app-list-project>
+            </div>
+        </div>
+    </div>
+</div>

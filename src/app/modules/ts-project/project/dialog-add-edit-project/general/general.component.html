@@ -1,0 +1,100 @@
+<div class="general_container_1">
+    <form [formGroup]="createForm">
+        <div class="general_content_client w-full flex">
+            <label class="general_content_client_txt w-[18%]">
+                Client*
+            </label>
+            <div class="general_content_client_select w-[500px]">
+                <mat-form-field class="w-full" appearance="outline">
+                    <mat-label>Choose a client...</mat-label>
+                    <mat-select formControlName="customerId"> 
+                        <mat-option *ngFor="let listClient of listClients" [value]="listClient.id">
+                            {{ listClient.name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="general_content_client_btn ml-5 mt-[3.5px]">
+                <button type="button" (click)="openNewClient()" mat-raised-button color="warn">
+                    <div class="flex items-center justify-center">
+                        <mat-icon>add</mat-icon>
+                        New Client
+                    </div>
+                </button>
+            </div>
+        </div>
+        <div class="general_content_project_name w-full flex">
+            <label class=" w-[18%]">
+                Project Name*
+            </label>
+            <div class=" w-[500px]">
+                <mat-form-field class="w-full" appearance="outline">
+                    <mat-label>Project name</mat-label>
+                    <input formControlName="name" matInput>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="general_content_project_code w-full flex">
+            <label class=" w-[18%]">
+                Project Code*
+            </label>
+            <div class=" w-[500px]">
+                <mat-form-field class="w-[46%]" appearance="outline">
+                    <mat-label>Project code</mat-label>
+                    <input formControlName="code" matInput>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="general_content_date w-full flex">
+            <label class=" w-[18%]">
+                Dates*
+            </label>
+            <div class="w-[500px] flex items-center">
+                <mat-form-field appearance="outline" class="w-[47%] mr-[3%]">
+                    <div class="flex items-center h-5">
+                        <input placeholder="Start at" formControlName="timeStart" matInput [matDatepicker]="pickerStart" />
+                        <mat-datepicker-toggle matIconSuffix [for]="pickerStart"></mat-datepicker-toggle>
+                    </div>
+                    <mat-datepicker #pickerStart></mat-datepicker>
+                </mat-form-field>
+                <p>to</p>
+                <mat-form-field appearance="outline" class="w-[47%] ml-[3%]">
+                    <div class="flex items-center h-5">
+                        <input placeholder="End at" formControlName="timeEnd" matInput [matDatepicker]="pickerEnd" />
+                        <mat-datepicker-toggle matIconSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+                    </div>
+                    <mat-datepicker #pickerEnd></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="general_content_note w-full flex">
+            <label class="mr-[18px] w-[18%]">
+                Note
+            </label>
+            <div class="w-[90%]">
+                <mat-form-field class="w-[90%]" appearance="outline">
+                    <input formControlName="note" matInput>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="general_content_all_user w-full flex">
+            <label for="checkbox" class="mr-[18px] w-[18%]">
+                All User
+            </label>
+            <section id="checkbox" class="example-section">
+                <mat-checkbox formControlName="isAllUserBelongTo" class="example-margin font-bold">
+                    Auto add user as a member of this project when creating new user</mat-checkbox>
+            </section>
+        </div>
+        <div class="general_content_project_type w-full flex">
+            <label class="mr-[18px] w-[18%]">
+                Project Type*
+            </label>
+            <div class="general_radio_btn">
+                <mat-radio-group (change)="onRadioChange($event.value)">
+                    <mat-radio-button disableRipple="true" [value]="type" [ngClass]="selectedType === type ? 'active' : 'notActive'"
+                     *ngFor="let type of types">{{ type | proType }}</mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div>
+    </form>
+</div>

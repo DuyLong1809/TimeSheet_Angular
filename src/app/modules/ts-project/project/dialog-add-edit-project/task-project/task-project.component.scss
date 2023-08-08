@@ -1,0 +1,29 @@
+.task_project_container{
+    height: 684px;
+}
+
+.table_task_project{
+    width: 100%;
+}
+
+.table_task_project tbody tr:nth-of-type(odd){
+    background-color: #f9f9f9;
+}
+
+.table_task_project tbody tr td{
+    padding: 5px 0 0 0;
+}
+
+.table_task_project_tr th{
+    padding: 8px;
+    width: 500px;
+} 
+
+.title_table mat-checkbox{
+    margin-left: 14px;
+}
+
+.table_task_project tbody tr td button{
+    justify-content: center;
+    display: flex;
+}

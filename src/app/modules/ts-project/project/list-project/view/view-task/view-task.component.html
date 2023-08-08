@@ -1,0 +1,52 @@
+<div class="p-[20px] h-[480px] overflow-y-scroll">
+    <table class="w-[80%]">
+        <thead class="p-[10px]">
+            <tr class="text-left">
+                <th>Billable Tasks</th>
+                <th>HOURS</th>
+                <th></th>
+                <th>Billable Hours</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="font-bold">Total</td>
+                <td></td>
+                <td>
+                    <mat-progress-bar mode="determinate" value="0"></mat-progress-bar>
+                </td>
+                <td>(0%)</td>
+            </tr>
+
+            <tr *ngFor="let filterViewTaskT of listViewTask">
+                <td>{{ filterViewTaskT.taskName}}</td>
+                <td></td>
+                <td>
+                    <mat-progress-bar mode="determinate" value="0"></mat-progress-bar>
+                </td>
+                <td>(0%)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="w-[80%]">
+        <thead class="p-[10px]">
+            <tr class="text-left">
+                <th>Non-billable Tasks</th>
+                <th>HOURS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="font-bold">Total</td>
+                <td></td>
+            </tr>
+
+            <tr *ngFor="let filterViewTaskF of listViewTaskfilter">
+                <td>{{ filterViewTaskF.taskName}}</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

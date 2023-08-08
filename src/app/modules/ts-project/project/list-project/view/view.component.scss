@@ -1,0 +1,16 @@
+.dialog_view_container{
+    width: 60vw;
+    // padding: 24px;
+}
+
+::ng-deep .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination{
+    display: none!important;
+}
+
+::ng-deep .mat-tab-header, ::ng-deep .mat-tab-label-container{
+    width: 31%;
+}
+
+// ::ng-deep .mat-ink-bar{
+//     width: 70px !important  ;
+// }
